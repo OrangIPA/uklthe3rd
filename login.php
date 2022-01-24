@@ -20,11 +20,11 @@
             $_SESSION['username'] = $username;
             $_SESSION['level'] = $data['level'];
             if($_SESSION['level'] == 'admin'){
-                header("location: home_admin.php");
+                header("location: home/home_admin.php");
             }elseif($_SESSION['level'] == 'petugas'){
-                header("location: home_petugas.php");
+                header("location: home/home_petugas.php");
             }else{
-                header("location: home_user.php");
+                header("location: home/home_user.php");
             }
         }else{
             // echo "<script>alert('username/password salah');location.href='form_login.php';</script>";

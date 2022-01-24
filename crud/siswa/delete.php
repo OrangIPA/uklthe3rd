@@ -1,8 +1,8 @@
 <?php
-    include '../connect.php';
+    include '../../connect.php';
 
-    $id_dosen = $_GET["id_dosen"];
-    $query = "DELETE FROM dosen WHERE id_dosen='$id_dosen'";
+    $nisn = $_GET["nisn"];
+    $query = "DELETE FROM dosen WHERE id_dosen='$nisn'";
 
     $result = mysqli_query($connect, $query);
     $num = mysqli_affected_rows($connect);
