@@ -9,7 +9,8 @@
     </head>
 
     <body>
-        <h3>Username <?=$_SESSION['username']?> berhasil login, Role sebagai <?=$_SESSION['level']?>. <br><br>
+        <h3>Username <?=$_SESSION['username']?> berhasil login, Role sebagai User. <br><br>
+        <!-- <h3>Username <?=$_SESSION['username']?> berhasil login, Role sebagai <?=$_SESSION['level']?>. <br><br> -->
         <a href="../logout.php">logout</a></h3>
     </body>
 </html>

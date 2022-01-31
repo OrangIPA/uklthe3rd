@@ -1,5 +1,4 @@
 <?php
-
 include '../../connect.php';
 
 $getnisn = $_GET['nisn'];
@@ -15,19 +14,19 @@ $value = mysqli_fetch_array($result);
         <a href="../../home/home.php">kembali</a>
         <h3>Ubah Data</h3>
         <form action="../../crud/siswa/update.php" method="POST">
-            <td><input type="hidden" name="nisn" value="<?=$_GET['nisn']?>"></td>
+            <td><input type="hidden" name="id_petugas" value="<?=$_GET['id_petugas']?>"></td>
             <table>
                 <tr>
-                    <td>NISN</td>
-                    <td>: <?=$_GET['nisn']?></td>
+                    <td>ID Petugas</td>
+                    <td>: <?=$_GET['id_petugas']?></td>
                 </tr>
                 <tr>
-                    <td>NIS</td>
-                    <td><input type="text" name="nis" value="<?=$value['nis'];?>"></td>
+                    <td>Username</td>
+                    <td><input type="text" name="username" value="<?=$value['username'];?>"></td>
                 </tr>
                 <tr>
-                    <td>Nama</td>
-                    <td><input type="text" name="nama" value="<?=$value['nama'];?>"></td>
+                    <td>password</td>
+                    <td><input type="password" name="password"></td>
                 </tr>
                 <tr>
                     <td>Nama Kelas</td>

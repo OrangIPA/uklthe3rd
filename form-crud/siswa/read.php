@@ -1,14 +1,8 @@
 <?php
 
-session_start();
+include '../../connect.php';
 
-if(!(isset($_SESSION['user']))){
-    header("location: ../login/form-login.php"):
-}
-
-include '../connect.php';
-
-$query = "SELECT * FROM dosen";
+$query = "SELECT * FROM siswa, kelas WHERE siswa.id_kelas = kelas.id_kelas";
 $result = mysqli_query($connect, $query);
 $num = mysqli_num_rows($result);
 
@@ -17,29 +11,37 @@ $num = mysqli_num_rows($result);
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Data Dosen</title>
+        <title>Data Siswa</title>
     </head>
     <body>
+        <a href="../../home/home.php">kembali</a>
+        <h2>Data Siswa</h2>
+        <a href="create.php">tambah siswa</a>
         <table border="1">
-            <h2>Data Dosen</h2>
             <tr>
-                <th>No.</th>
-                <th>Nama Dosen</th>
-                <th>Telepon</th>
+                <th>NISN</th>
+                <th>NIS</th>
+                <th>Kelas</th>
+                <th>Nama</th>
+                <th>alamat</th>
+                <th>no telepon</th>
                 <th colspan="2">Aksi</th>
             </tr>
             <?php
             if ($num>0) {
-                $no = 1;
                 while ($data = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $no . "</td>";
-                    echo "<td>" . $data["nama_dosen"] . "</td>";
-                    echo "<td>" . $data["telp"] . "</td>";
-                    echo "<td><a href='form-update.php?id_dosen=".$data['id_dosen']."'>Edit</a> | ";
-                    echo "<td><a href='delete.php?id_dosen=".$data['id_dosen']."' onclick='return confirm(\"Apakah Anda yakin ingin menghapus data?\")'>Hapus</a>";
-                    echo "</tr>";
-                    $no++;
+                    ?>
+                    <tr>
+                        <td><?=$data['nisn']?></td>
+                        <td><?=$data['nis']?></td>
+                        <td><?=$data['nama_kelas'] . " | " . $data['angkatan']?></td>
+                        <td><?=$data['nama']?></td>
+                        <td><?=$data['alamat']?></td>
+                        <td><?=$data['no_tlp']?></td>
+                        <td><a href="update.php?nisn=<?=$data['nisn']?>">Edit</a></td>
+                        <td><a href="../../crud/siswa/delete.php?nisn=<?=$data['nisn']?>" onclick='return confirm("Apakah Anda yakin ingin menghapus data?")'>Hapus</a></td>
+                    </tr>
+                    <?php
                 }
             }else {
                 echo " <td colspan='3'> Tidak ada data</td>";
@@ -48,4 +50,3 @@ $num = mysqli_num_rows($result);
         </table>
     </body>
 </html>
-    

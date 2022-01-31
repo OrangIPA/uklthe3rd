@@ -1,9 +1,4 @@
 <?php
-
-// $connectPath = $_SERVER['DOCUMENT_ROOT'];
-// $connectPath .= "/uklphpnative-soal1/connect.php";
-// require($connectPath);
-
 include '../../connect.php';
 ?>
 
@@ -12,7 +7,7 @@ include '../../connect.php';
         <title>Tambah Data Siswa</title>
     </head>
     <body>
-        <a href="../../home/home_admin.php">kembali</a>
+        <a href="../../home/home.php">kembali</a>
         <h3>Tambah Data Siswa</h3>
         <form action="../../crud/siswa/create.php" method="POST">
             <table>
@@ -36,8 +31,8 @@ include '../../connect.php';
                         $kelas = mysqli_query($connect, "SELECT * FROM kelas");
                         while($r = mysqli_fetch_assoc($kelas)){?>
                             <option value="<?= $r['id_kelas']; ?>"><?=$r['nama_kelas'] . " | " . $r['angkatan'];?></option>
+                            <?php } ?>
                         </select>
-                        <?php } ?>
                     </td>
                 </tr>
                 <tr>

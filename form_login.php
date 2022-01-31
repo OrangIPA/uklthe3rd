@@ -1,3 +1,19 @@
+<!-- <?php
+// session_start();
+// if(isset('username')){
+//     switch($_SESSION['level']){
+//         case 'admin':
+//             header('home/home_admin.php');
+//             break;
+//         case 'petugas':
+//             header('home/home_petugas.php');
+//             break;
+//         case 'user':
+//             header('home/home_user.php');
+//             break;
+//     }
+// }
+?> -->
 <html>
     <head>
         <title>Login</title>
