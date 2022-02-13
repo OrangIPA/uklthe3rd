@@ -1,6 +1,11 @@
 <?php
 
+session_start();
+
 include '../../connect.php';
+if($_SESSION['level']!="admin"){
+    header("location: ../permission_error.php");
+}
 
 $getnisn = $_GET['nisn'];
 $result = mysqli_query($connect, "SELECT * FROM siswa, kelas WHERE nisn = '$getnisn'");

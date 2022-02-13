@@ -1,6 +1,11 @@
 <?php
 
+session_start();
+
 include '../../connect.php';
+if($_SESSION['level']!="admin"){
+    header("location: ../permission_error.php");
+}
 
 $query = "SELECT * FROM siswa, kelas WHERE siswa.id_kelas = kelas.id_kelas";
 $result = mysqli_query($connect, $query);

@@ -1,5 +1,9 @@
 <?php
+    session_start();
     include '../../connect.php';
+    if($_SESSION['level']!="admin"){
+        header("location: ../permission_error.php");
+    }
 
     $nisn = $_GET["nisn"];
     $query = "DELETE FROM siswa WHERE nisn='$nisn'";

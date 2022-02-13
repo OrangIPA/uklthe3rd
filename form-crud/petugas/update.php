@@ -1,19 +1,25 @@
 <?php
+
+session_start();
+
 include '../../connect.php';
+if($_SESSION['level']!="admin"){
+    header("location: ../permission_error.php");
+}
 
 $getnisn = $_GET['nisn'];
-$result = mysqli_query($connect, "SELECT * FROM siswa, kelas WHERE nisn = '$getnisn'");
+$result = mysqli_query($connect, "SELECT * FROM petugas where id_petugas='$id_petugas'");
 $value = mysqli_fetch_array($result);
 ?>
 
 <html>
     <head>
-        <title>Edit Data Siswa</title>
+        <title>Edit Data Petugas</title>
     </head>
     <body>
         <a href="../../home/home.php">kembali</a>
         <h3>Ubah Data</h3>
-        <form action="../../crud/siswa/update.php" method="POST">
+        <form action="../../crud/petugas/update.php" method="POST">
             <td><input type="hidden" name="id_petugas" value="<?=$_GET['id_petugas']?>"></td>
             <table>
                 <tr>
@@ -29,30 +35,8 @@ $value = mysqli_fetch_array($result);
                     <td><input type="password" name="password"></td>
                 </tr>
                 <tr>
-                    <td>Nama Kelas</td>
-                    <td>
-                        <select name="id_kelas">
-                        <?php
-                        $kelas = mysqli_query($connect, "SELECT * FROM kelas");
-                        while($r = mysqli_fetch_assoc($kelas)){?>
-                            <option value="<?= $r['id_kelas']; ?>"
-                            <?php
-                            if($value['id_kelas'] == --$r['id_kelas']){
-                                echo "selected";
-                            }
-                            ?>
-                            ><?=$r['nama_kelas'] . " | " . $r['angkatan'];?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Alamat</td>
-                    <td><input type="text" name="alamat" value="<?=$value['alamat'];?>"></td>
-                </tr>
-                <tr>
-                    <td>No Telepon</td>
-                    <td><input type="text" name="no_tlp" value="<?=$value['no_tlp'];?>"></td>
+                    <td>Nama Petugas</td>
+                    <td><input type="text" name="nama_petugas" value="<?=$value['nama_petugas'];?>"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="update data"></td>

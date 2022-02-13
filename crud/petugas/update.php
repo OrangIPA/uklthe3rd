@@ -1,5 +1,9 @@
 <?php
+    session_start();
     include '../../connect.php';
+    if($_SESSION['level']!="admin"){
+        header("location: ../permission_error.php");
+    }
     
     $id_petugas = $_POST["id_petugas"];
     $username = $_POST["username"];

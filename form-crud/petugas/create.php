@@ -1,15 +1,17 @@
 <?php
 
-// $connectPath = $_SERVER['DOCUMENT_ROOT'];
-// $connectPath .= "/uklphpnative-soal1/connect.php";
-// require($connectPath);
+session_start();
 
 include '../../connect.php';
+if($_SESSION['level']!="admin"){
+    header("location: ../permission_error.php");
+}
+
 ?>
 
 <html>
     <head>
-        <title>Tambah Data Siswa</title>
+        <title>Tambah Data Petugas</title>
     </head>
     <body>
         <a href="../../home/home.php">kembali</a>

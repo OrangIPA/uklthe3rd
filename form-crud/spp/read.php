@@ -7,7 +7,7 @@ if($_SESSION['level']!="admin"){
     header("location: ../permission_error.php");
 }
 
-$query = "SELECT * FROM petugas";
+$query = "SELECT * FROM spp";
 $result = mysqli_query($connect, $query);
 $num = mysqli_num_rows($result);
 
@@ -16,18 +16,18 @@ $num = mysqli_num_rows($result);
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Data Petugas</title>
+        <title>Data SPP</title>
     </head>
     <body>
         <a href="../../home/home.php">kembali</a>
-        <h2>Data Petugas</h2>
-        <a href="create.php">tambah petugas</a>
+        <h2>Data SPP</h2>
+        <a href="create.php">tambah Data SPP</a>
         <table border="1">
             <tr>
-                <th>ID Petugas</th>
-                <th>Username</th>
-                <th>Nama Petugas</th>
-                <th>Level</th>
+                <th>ID SPP</th>
+                <th>Angkatan</th>
+                <th>Tahun</th>
+                <th>Nominal</th>
                 <th colspan="2">Aksi</th>
             </tr>
             <?php
@@ -35,12 +35,12 @@ $num = mysqli_num_rows($result);
                 while ($data = mysqli_fetch_assoc($result)) {
                     ?>
                     <tr>
-                        <td><?=$data['id_petugas']?></td>
-                        <td><?=$data['username']?></td>
-                        <td><?=$data['nama_petugas']?></td>
-                        <td><?=$data['level']?></td>
-                        <td><a href="update.php?id_petugas=<?=$data['id_petugas']?>">Edit</a></td>
-                        <td><a href="../../crud/petugas/delete.php?id_petugas=<?=$data['id_petugas']?>" onclick='return confirm("Apakah Anda yakin ingin menghapus data?")'>Hapus</a></td>
+                        <td><?=$data['id_spp']?></td>
+                        <td><?=$data['angkatan']?></td>
+                        <td><?=$data['tahun']?></td>
+                        <td><?=$data['nominal']?></td>
+                        <td><a href="update.php?id_spp=<?=$data['id_spp']?>">Edit</a></td>
+                        <td><a href="../../crud/spp/delete.php?id_spp=<?=$data['id_spp']?>" onclick='return confirm("Apakah Anda yakin ingin menghapus data?")'>Hapus</a></td>
                     </tr>
                     <?php
                 }
